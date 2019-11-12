@@ -1,0 +1,55 @@
+{
+  "name": "ember-cli-deploy-sentry-cli",
+  "version": "0.0.0",
+  "description": "Sentry CLI integration for ember-cli-deploy",
+  "keywords": [
+    "ember-addon",
+    "ember-cli-deploy-plugin",
+    "sentry",
+    "ci"
+  ],
+  "repository": "https://github.com/Exelord/ember-cli-deploy-sentry-cli",
+  "license": "MIT",
+  "author": "Exelord",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "./node_modules/mocha/bin/mocha tests/unit/index-nodetest.js",
+    "release": "release-it"
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}",
+      "commitMessage": "v${version}",
+      "pushArgs": "--no-verify"
+    },
+    "github": {
+      "release": true
+    },
+    "hooks": {
+      "before:init": "npm run lint && npm test"
+    }
+  },
+  "peerDependencies": {
+    "ember-cli-deploy": "^1.0.2"
+  },
+  "dependencies": {
+    "@sentry/cli": "^1.49.0",
+    "ember-cli-deploy-plugin": "^0.2.9",
+    "ember-cli-deploy-revision-data": "^1.0.0"
+  },
+  "devDependencies": {
+    "@paycertify/eslint-plugin": "github:paycertify/eslint-plugin#v0.9.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2",
+    "release-it": "^12.4.3",
+    "sinon": "^7.5.0"
+  },
+  "engines": {
+    "node": "8.* || >= 10.*"
+  }
+}

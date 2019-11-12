@@ -1,0 +1,20 @@
+---
+language: node_js
+node_js:
+  - "8"
+
+sudo: false
+dist: trusty
+
+cache:
+  directories:
+    - $HOME/.npm
+
+env:
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+
+script:
+  - npm run lint
+  - npm test

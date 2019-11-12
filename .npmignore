@@ -1,0 +1,16 @@
+# dependencies
+/bower_components/
+
+# misc
+/.bowerrc
+/.editorconfig
+/.env*
+/.eslintignore
+/.eslintrc.js
+/.gitignore
+/.travis.yml
+/bower.json
+/CONTRIBUTING.md
+/tests/
+/yarn.lock
+.gitkeep
