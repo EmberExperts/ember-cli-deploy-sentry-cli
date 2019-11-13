@@ -58,6 +58,9 @@ Your `authToken` needs to have following scopes: `org:read` and `project:release
 #### 2. `Could not determine any commits to be associated automatically.`
 Your application repository needs to be connected on Sentry to your ogranization account and connected with the project.
 
+#### 3. Your app's issues and not correctly related with app deploy version
+Make sure your app's `moudlePrefix` is equal to your Sentry `appName`, and your `revision-data` `type` in `config/deploy.js` is using the same versioning strategy. In most cases you should use `version-commit`
+
 ## BONUS: Integrate your app with Sentry
 
 1. Install Sentry:
