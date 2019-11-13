@@ -48,6 +48,60 @@ Your `authToken` needs to have following scopes: `org:read` and `project:release
 #### 2. `Could not determine any commits to be associated automatically.`
 Your application repository needs to be connected on Sentry to your ogranization account and connected with the project.
 
+## BONUS: Integrate your app with Sentry
+
+1. Install Sentry:
+
+`npm i @sentry/browser @sentry/integrations`
+
+2. Add sentry config to `config/environment.js` file
+
+```js
+// config/environment.js
+
+// Add following config
+{
+  sentry: {
+    dsn: 'your-app-dsn'
+  }
+}
+```
+
+3. Configure Sentry instance with defaults.
+**Remember to define `environment` and `release`**
+
+```js
+// app/sentry.js
+
+import * as Sentry from '@sentry/browser';
+import { Ember } from '@sentry/integrations/esm/ember';
+import config from 'web-app/config/environment';
+
+const sentryConfig = config.sentry || {};
+
+export function startSentry() {
+  Sentry.init({
+    environment: config.environment,
+    release: `${config.modulePrefix}@${config.APP.version}`,
+    ...sentryConfig,
+    integrations: [new Ember()]
+  });
+}
+```
+
+4. Initialize Sentry at the begining of `app/index.js` file
+
+```js
+// app/index.js
+
+import { startSentry } from './sentry';
+
+startSentry();
+
+```
+
+More info: https://simplabs.com/blog/2019/07/15/sentry-and-ember
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
