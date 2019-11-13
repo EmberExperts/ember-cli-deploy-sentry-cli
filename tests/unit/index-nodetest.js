@@ -136,6 +136,15 @@ describe('sentry-cli', function() {
 
         assert.equal(plugin.readConfig('environment'), 'my-production');
       });
+
+      it('url', function() {
+        const plugin = Plugin.createDeployPlugin({ name: 'sentry-cli' });
+
+        plugin.beforeHook(this.context);
+        plugin.configure(this.context);
+
+        assert.equal(plugin.readConfig('url'), '');
+      });
     });
   });
 
@@ -150,8 +159,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases new my-project@v1.0.0@1234567');
     });
 
@@ -165,8 +174,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases set-commits --auto my-project@v1.0.0@1234567');
     });
 
@@ -180,8 +189,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite my-dest-dir/assets');
     });
 
@@ -195,8 +204,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases finalize my-project@v1.0.0@1234567');
     });
   });
@@ -212,8 +221,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases deploys my-project@v1.0.0@1234567 new -e my-production');
     });
   });
@@ -229,8 +238,8 @@ describe('sentry-cli', function() {
 
       this.sinon.assert.calledWithExactly(stub,
         'SENTRY_ORG=my-org ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'SENTRY_PROJECT=my-project ' +
+        'SENTRY_AUTH_TOKEN=my-auth-token ' +
         'node_modules/.bin/sentry-cli releases delete my-project@v1.0.0@1234567');
     });
   });

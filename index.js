@@ -23,7 +23,9 @@ module.exports = {
 
         environment(context) {
           return context.deployTarget;
-        }
+        },
+
+        url: ''
       },
 
       requiredConfig: ['appName', 'orgName', 'authToken'],
@@ -70,11 +72,13 @@ module.exports = {
         const authToken = this.readConfig('authToken');
         const orgName = this.readConfig('orgName');
         const appName = this.readConfig('appName');
+        const url = this.readConfig('url');
 
         return this._exec(
+          url ? `SENTRY_URL=${url} ` : '' +
           `SENTRY_ORG=${orgName} ` +
-          `SENTRY_AUTH_TOKEN=${authToken} ` +
           `SENTRY_PROJECT=${appName} ` +
+          `SENTRY_AUTH_TOKEN=${authToken} ` +
           `node_modules/.bin/sentry-cli ${command}`
         );
       },

@@ -35,6 +35,7 @@ Add plugin config to your `config/deploy.js`:
     appName: 'sentry-app-name',
     orgName: 'sentry-org-name',
     authToken: process.env.SENTRY_AUTH_TOKEN
+    // url: 'https://your-custom-sentry-server.test/` // in case of self-hosted server
   }
 }
 ```
