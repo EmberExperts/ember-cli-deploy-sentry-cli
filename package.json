@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-deploy-sentry-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sentry CLI integration for ember-cli-deploy",
   "keywords": [
     "ember-addon",
