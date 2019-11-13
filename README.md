@@ -18,6 +18,16 @@ ember install ember-cli-deploy-sentry-cli
 
 ## Usage
 
+Turn on `sourcemaps` generation in `ember-cli-build.js` config:
+```js
+{
+  sourcemaps: {
+    enabled: true,
+    extensions: ['js']
+  }
+}
+```
+
 Add plugin config to your `config/deploy.js`:
 ```js
 {
