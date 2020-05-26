@@ -25,7 +25,7 @@ module.exports = {
           return context.deployTarget;
         },
 
-        url: '',
+        url: ''
       },
 
       requiredConfig: ['appName', 'orgName', 'authToken'],
@@ -77,21 +77,21 @@ module.exports = {
         return this._exec(
           [
             path.join('node_modules', '.bin', 'sentry-cli'),
-            url ? `SENTRY_URL=${url}` : '',
+            url ? `--url ${url}` : '',
             `--auth-token ${authToken}`,
             'releases',
             `--org ${orgName}`,
             `--project ${appName}`,
-            params,
+            params
           ].join(' ')
         );
       },
 
       _exec(command = '') {
         return execSync(command, { cwd: this.project.root });
-      },
+      }
     });
 
     return new DeployPlugin();
-  },
+  }
 };
