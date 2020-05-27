@@ -35,16 +35,16 @@ module.exports = {
         const assetsDir = this.readConfig('assetsDir');
 
         this.log('SENTRY: Creating release...');
-        this.sentryCliExec(`releases new ${releaseName}`);
+        this.sentryCliExec('releases', `new ${releaseName}`);
 
         this.log('SENTRY: Assigning commits...');
-        this.sentryCliExec(`releases set-commits --auto ${releaseName}`);
+        this.sentryCliExec('releases', `set-commits --auto ${releaseName}`);
 
         this.log('SENTRY: Uploading source maps...');
-        this.sentryCliExec(`releases files ${releaseName} upload-sourcemaps --rewrite ${assetsDir}`);
+        this.sentryCliExec('releases', `files ${releaseName} upload-sourcemaps --rewrite ${assetsDir}`);
 
         this.log('SENTRY: Finalizing release...');
-        this.sentryCliExec(`releases finalize ${releaseName}`);
+        this.sentryCliExec('releases', `finalize ${releaseName}`);
 
         this.log('SENTRY: Release published!...');
       },
@@ -55,7 +55,7 @@ module.exports = {
         const environment = this.readConfig('environment');
 
         this.log('SENTRY: Deploying release...');
-        this.sentryCliExec(`releases deploys ${releaseName} new -e ${environment}`);
+        this.sentryCliExec('releases', `deploys ${releaseName} new -e ${environment}`);
         this.log('SENTRY: Deployed!');
       },
 
@@ -64,22 +64,26 @@ module.exports = {
         const releaseName = `${appName}@${this.readConfig('revisionKey')}`;
 
         this.log('SENTRY: Deleting release...');
-        this.sentryCliExec(`releases delete ${releaseName}`);
+        this.sentryCliExec('releases', `delete ${releaseName}`);
         this.log('SENTRY: Release deleted!');
       },
 
-      sentryCliExec(command) {
+      sentryCliExec(command, subCommand) {
         const authToken = this.readConfig('authToken');
         const orgName = this.readConfig('orgName');
         const appName = this.readConfig('appName');
         const url = this.readConfig('url');
 
         return this._exec(
-          url ? `SENTRY_URL=${url} ` : '' +
-          `SENTRY_ORG=${orgName} ` +
-          `SENTRY_PROJECT=${appName} ` +
-          `SENTRY_AUTH_TOKEN=${authToken} ` +
-          `node_modules/.bin/sentry-cli ${command}`
+          [
+            path.join('node_modules', '.bin', 'sentry-cli'),
+            url ? `--url ${url}` : '',
+            `--auth-token ${authToken}`,
+            command,
+            `--org ${orgName}`,
+            `--project ${appName}`,
+            subCommand
+          ].join(' ')
         );
       },
 
