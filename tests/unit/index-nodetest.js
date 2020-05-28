@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 const { assert } = require('chai');
 const sinon = require('sinon');
+const path = require('path');
 const Plugin = require('../../index');
 
 function setupSinon() {
@@ -116,7 +117,7 @@ describe('sentry-cli', function() {
         plugin.beforeHook(this.context);
         plugin.configure(this.context);
 
-        assert.equal(plugin.readConfig('assetsDir'), 'my-dest-dir/assets');
+        assert.equal(plugin.readConfig('assetsDir'), path.join('my-dest-dir', 'assets'));
       });
 
       it('revisionKey', function() {
@@ -158,10 +159,7 @@ describe('sentry-cli', function() {
       plugin.didPrepare();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases new my-project@v1.0.0@1234567');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project new my-project@v1.0.0@1234567`);
     });
 
     it('sets related commits', function() {
@@ -173,10 +171,7 @@ describe('sentry-cli', function() {
       plugin.didPrepare();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases set-commits --auto my-project@v1.0.0@1234567');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project set-commits --auto my-project@v1.0.0@1234567`);
     });
 
     it('uploads source maps', function() {
@@ -188,10 +183,7 @@ describe('sentry-cli', function() {
       plugin.didPrepare();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite my-dest-dir/assets');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join('my-dest-dir', 'assets')}`);
     });
 
     it('saves release', function() {
@@ -203,10 +195,7 @@ describe('sentry-cli', function() {
       plugin.didPrepare();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases finalize my-project@v1.0.0@1234567');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project finalize my-project@v1.0.0@1234567`);
     });
   });
 
@@ -220,10 +209,7 @@ describe('sentry-cli', function() {
       plugin.didDeploy();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases deploys my-project@v1.0.0@1234567 new -e my-production');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project deploys my-project@v1.0.0@1234567 new -e my-production`);
     });
   });
 
@@ -237,10 +223,7 @@ describe('sentry-cli', function() {
       plugin.didFail();
 
       this.sinon.assert.calledWithExactly(stub,
-        'SENTRY_ORG=my-org ' +
-        'SENTRY_PROJECT=my-project ' +
-        'SENTRY_AUTH_TOKEN=my-auth-token ' +
-        'node_modules/.bin/sentry-cli releases delete my-project@v1.0.0@1234567');
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project delete my-project@v1.0.0@1234567`);
     });
   });
 });
