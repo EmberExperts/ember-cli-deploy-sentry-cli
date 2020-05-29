@@ -183,7 +183,21 @@ describe('sentry-cli', function() {
       plugin.didPrepare();
 
       this.sinon.assert.calledWithExactly(stub,
-        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join('my-dest-dir', 'assets')}`);
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join('my-dest-dir', 'assets')} `);
+    });
+
+    it('uploads source maps with --url-prefix', function() {
+      const plugin = Plugin.createDeployPlugin({ name: 'sentry-cli' });
+      const stub = this.sinon.stub(plugin, '_exec');
+
+      this.context.config['sentry-cli'].urlPrefix = '~/assets';
+
+      plugin.beforeHook(this.context);
+      plugin.configure(this.context);
+      plugin.didPrepare();
+
+      this.sinon.assert.calledWithExactly(stub,
+        `${path.join('node_modules', '.bin', 'sentry-cli')}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join('my-dest-dir', 'assets')} --url-prefix ~/assets`);
     });
 
     it('saves release', function() {
