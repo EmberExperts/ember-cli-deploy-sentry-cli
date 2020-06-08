@@ -1,14 +1,8 @@
 module.exports = {
   root: true,
 
-  plugins: [
-    '@paycertify'
-  ],
-
-  extends: [
-    'plugin:@paycertify/recommended',
-    'plugin:@paycertify/node'
-  ],
+  plugins: ['zero-config'],
+  extends: ['plugin:zero-config/node'],
 
   env: {
     mocha: true

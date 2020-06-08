@@ -37,16 +37,16 @@
     "ember-cli-deploy": "^1.0.2"
   },
   "dependencies": {
-    "@sentry/cli": "^1.53.0",
+    "@sentry/cli": "^1.54.0",
     "ember-cli-deploy-plugin": "^0.2.9",
     "ember-cli-deploy-revision-data": "^1.0.0"
   },
   "devDependencies": {
-    "@paycertify/eslint-plugin": "github:paycertify/eslint-plugin#v0.9.0",
     "chai": "^4.2.0",
-    "eslint": "^7.0.0",
-    "mocha": "^7.1.2",
-    "release-it": "^13.6.1",
+    "eslint": "^7.2.0",
+    "eslint-plugin-zero-config": "^2.1.2",
+    "mocha": "^7.2.0",
+    "release-it": "^13.6.2",
     "sinon": "^9.0.2"
   },
   "engines": {
