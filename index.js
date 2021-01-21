@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable max-len, max-lines-per-function */
 // eslint-disable-next-line strict
 'use strict';
@@ -26,7 +27,7 @@ module.exports = {
           return context.deployTarget;
         },
 
-        url: ''
+        url: '',
       },
 
       requiredConfig: ['appName', 'orgName', 'authToken'],
@@ -84,16 +85,16 @@ module.exports = {
             command,
             `--org ${orgName}`,
             `--project ${appName}`,
-            subCommand
+            subCommand,
           ].join(' ')
         );
       },
 
       _exec(command = '') {
         return execSync(command, { cwd: this.project.root });
-      }
+      },
     });
 
     return new DeployPlugin();
-  }
+  },
 };

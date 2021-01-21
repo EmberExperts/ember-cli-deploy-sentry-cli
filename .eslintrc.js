@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 module.exports = {
   root: true,
 
@@ -5,6 +6,6 @@ module.exports = {
   extends: ['plugin:zero-config/node'],
 
   env: {
-    mocha: true
-  }
+    mocha: true,
+  },
 };
