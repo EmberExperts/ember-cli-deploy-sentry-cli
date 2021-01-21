@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "./node_modules/mocha/bin/mocha tests/unit/index-nodetest.js",
+    "test": "mocha tests/unit/index-nodetest.js",
     "release": "release-it"
   },
   "release-it": {
@@ -37,17 +37,17 @@
     "ember-cli-deploy": "^1.0.2"
   },
   "dependencies": {
-    "@sentry/cli": "^1.54.0",
+    "@sentry/cli": "^1.61.0",
     "ember-cli-deploy-plugin": "^0.2.9",
     "ember-cli-deploy-revision-data": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.18.0",
     "eslint-plugin-zero-config": "^2.1.2",
-    "mocha": "^7.2.0",
-    "release-it": "^13.6.2",
-    "sinon": "^9.0.2"
+    "mocha": "^8.2.1",
+    "release-it": "^14.2.2",
+    "sinon": "^9.2.3"
   },
   "engines": {
     "node": "10.* || >= 12.*"
