@@ -37,7 +37,7 @@
     "ember-cli-deploy": "^1.0.2"
   },
   "dependencies": {
-    "@sentry/cli": "^1.61.0",
+    "@sentry/cli": "^1.65.0",
     "ember-cli-deploy-plugin": "^0.2.9",
     "ember-cli-deploy-revision-data": "^1.0.0"
   },
