@@ -37,17 +37,17 @@
     "ember-cli-deploy": "^1.0.2"
   },
   "dependencies": {
-    "@sentry/cli": "^1.65.0",
+    "@sentry/cli": "^1.66.0",
     "ember-cli-deploy-plugin": "^0.2.9",
     "ember-cli-deploy-revision-data": "^1.0.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.18.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.29.0",
     "eslint-plugin-zero-config": "^2.1.2",
-    "mocha": "^8.2.1",
-    "release-it": "^14.2.2",
-    "sinon": "^9.2.3"
+    "mocha": "^9.0.1",
+    "release-it": "^14.10.0",
+    "sinon": "^11.1.1"
   },
   "engines": {
     "node": "10.* || >= 12.*"
