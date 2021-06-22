@@ -55,7 +55,7 @@ Leave the rest for sentry-cli ;) Deploy! 🚀✌️
 ## FAQ & Possible errors
 
 #### 1. `You do not have permission to perform this action`
-Your `authToken` needs to have following scopes: `org:read` and `project:releases`
+Make sure your authToken is present [https://sentry.io/settings/account/api/auth-tokens/](https://sentry.io/settings/account/api/auth-tokens/) and has following scopes: `org:read` and `project:releases`
 
 #### 2. `Could not determine any commits to be associated automatically.`
 Your application repository needs to be connected on Sentry to your ogranization account and connected with the project.
