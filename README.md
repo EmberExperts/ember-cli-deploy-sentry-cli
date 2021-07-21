@@ -6,7 +6,7 @@ Integrate your deploy pipeline with Sentry. Upload sourcemaps, assign related co
 # Compatibility
 
 * ember-cli-deploy v1.0 or above
-* Node.js v8 or above
+* Node.js v12 or above
 
 
 ## Installation
