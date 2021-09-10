@@ -104,10 +104,10 @@ export function startSentry() {
 }
 ```
 
-4. Initialize Sentry at the begining of `app/index.js` file
+4. Initialize Sentry at the begining of `app/app.js` file
 
 ```js
-// app/index.js
+// app/app.js
 
 import { startSentry } from './sentry';
 
