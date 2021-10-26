@@ -71,7 +71,7 @@ module.exports = {
         this.log("SENTRY: Deploying release...");
         this.sentryCliExec(
           "releases",
-          `deploys ${releaseName} new -e ${environment}`
+          `deploys "${releaseName}" new -e ${environment}`
         );
         this.log("SENTRY: Deployed!");
       },
@@ -81,7 +81,7 @@ module.exports = {
         const releaseName = `${appName}@${this.readConfig("revisionKey")}`;
 
         this.log("SENTRY: Deleting release...");
-        this.sentryCliExec("releases", `delete ${releaseName}`);
+        this.sentryCliExec("releases", `delete "${releaseName}"`);
         this.log("SENTRY: Release deleted!");
       },
 
