@@ -48,17 +48,17 @@ module.exports = {
         this.log("SENTRY: Assigning commits...");
         this.sentryCliExec(
           "releases",
-          `set-commits ${releaseName} --auto --ignore-missing`
+          `set-commits "${releaseName}" --auto --ignore-missing`
         );
 
         this.log("SENTRY: Uploading source maps...");
         this.sentryCliExec(
           "releases",
-          `files ${releaseName} upload-sourcemaps --rewrite ${assetsDir} ${urlPrefix}`
+          `files "${releaseName}" upload-sourcemaps --rewrite ${assetsDir} ${urlPrefix}`
         );
 
         this.log("SENTRY: Finalizing release...");
-        this.sentryCliExec("releases", `finalize ${releaseName}`);
+        this.sentryCliExec("releases", `finalize "${releaseName}"`);
 
         this.log("SENTRY: Release published!...");
       },
