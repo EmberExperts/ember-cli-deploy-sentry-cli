@@ -184,7 +184,7 @@ describe('sentry-cli', function () {
           'node_modules',
           '.bin',
           'sentry-cli'
-        )}  --auth-token my-auth-token releases --org my-org --project my-project set-commits my-project@v1.0.0@1234567 --auto --ignore-missing`
+        )}  --auth-token my-auth-token releases --org my-org --project my-project set-commits my-project@v1.0.0@1234567 --auto --ignore-missing --ignore-empty`
       );
     });
 
