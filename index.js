@@ -43,7 +43,7 @@ module.exports = {
           : "";
 
         this.log("SENTRY: Creating release...");
-        this.sentryCliExec("releases", `new ${releaseName}`);
+        this.sentryCliExec("releases", `new "${releaseName}"`);
 
         this.log("SENTRY: Assigning commits...");
         this.sentryCliExec(
