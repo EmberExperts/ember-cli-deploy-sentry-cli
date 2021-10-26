@@ -8,6 +8,16 @@ const { execSync } = require('child_process');
 const BasePlugin = require('ember-cli-deploy-plugin');
 const packageJson = require("./package.json");
 
+// Dynamically resolve `sentry-cli` location
+const sentryCliPackagePath = require.resolve("@sentry/cli/package.json");
+const { dir: sentryCliDirectory } = path.parse(sentryCliPackagePath);
+const sentryCliRelativeBinLocation =
+  require(sentryCliPackagePath).bin["sentry-cli"];
+const sentryCliAbsoluteBinLocation = path.join(
+  sentryCliDirectory,
+  sentryCliRelativeBinLocation
+);
+
 module.exports = {
   name: packageJson.name,
 
@@ -93,7 +103,7 @@ module.exports = {
 
         return this._exec(
           [
-            path.join("node_modules", ".bin", "sentry-cli"),
+            sentryCliAbsoluteBinLocation,
             url ? `--url ${url}` : "",
             `--auth-token ${authToken}`,
             command,
