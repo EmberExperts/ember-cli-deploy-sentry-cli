@@ -165,7 +165,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project new my-project@v1.0.0@1234567`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project new "my-project@v1.0.0@1234567"`
       );
     });
 
@@ -179,7 +179,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project set-commits my-project@v1.0.0@1234567 --auto --ignore-missing --ignore-empty`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project set-commits "my-project@v1.0.0@1234567" --auto --ignore-missing --ignore-empty`
       );
     });
 
@@ -193,7 +193,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join(
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project files "my-project@v1.0.0@1234567" upload-sourcemaps --rewrite ${path.join(
           'my-dest-dir',
           'assets'
         )} `
@@ -212,7 +212,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project files my-project@v1.0.0@1234567 upload-sourcemaps --rewrite ${path.join(
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project files "my-project@v1.0.0@1234567" upload-sourcemaps --rewrite ${path.join(
           'my-dest-dir',
           'assets'
         )} --url-prefix ~/assets`
@@ -229,7 +229,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project finalize my-project@v1.0.0@1234567`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project finalize "my-project@v1.0.0@1234567"`
       );
     });
   });
@@ -245,7 +245,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project deploys my-project@v1.0.0@1234567 new -e my-production`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project deploys "my-project@v1.0.0@1234567" new -e my-production`
       );
     });
   });
@@ -261,7 +261,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project delete my-project@v1.0.0@1234567`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project delete "my-project@v1.0.0@1234567"`
       );
     });
   });
