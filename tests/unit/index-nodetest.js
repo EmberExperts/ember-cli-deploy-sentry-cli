@@ -179,7 +179,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project set-commits my-project@v1.0.0@1234567 --auto --ignore-missing`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project set-commits my-project@v1.0.0@1234567 --auto --ignore-missing --ignore-empty`
       );
     });
 
