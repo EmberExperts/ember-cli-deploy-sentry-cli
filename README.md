@@ -36,6 +36,7 @@ Add plugin config to your `config/deploy.js`:
     orgName: 'sentry-org-name',
     authToken: process.env.SENTRY_AUTH_TOKEN,
     urlPrefix: '', // if you need prefix for Sentry to catch like ~/assets
+    releaseName: '', // optional; can be used to override the `${APP_NAME}@${REVISION_KEY}` pattern used for release naming
     // url: 'https://your-custom-sentry-server.test/` // in case of self-hosted server
   }
 }

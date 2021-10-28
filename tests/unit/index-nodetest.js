@@ -151,6 +151,15 @@ describe('sentry-cli', function () {
 
         assert.equal(plugin.readConfig('url'), '');
       });
+
+      it('releaseName', function() {
+        const plugin = Plugin.createDeployPlugin({ name: 'sentry-cli' });
+
+        plugin.beforeHook(this.context);
+        plugin.configure(this.context);
+
+        assert.equal(plugin.readConfig('releaseName'), 'my-project@v1.0.0@1234567');
+      })
     });
   });
 

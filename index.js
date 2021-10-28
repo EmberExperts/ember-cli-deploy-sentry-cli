@@ -38,15 +38,20 @@ module.exports = {
           return context.deployTarget;
         },
 
+        releaseName(_context, pluginHelper) {
+          const appName = pluginHelper.readConfig("appName");
+          const revisionKey = pluginHelper.readConfig("revisionKey");
+
+          return `${appName}@${revisionKey}`;
+        },
+
         url: "",
       },
 
       requiredConfig: ["appName", "orgName", "authToken"],
 
       didPrepare() {
-        const releaseName = `${this.readConfig("appName")}@${this.readConfig(
-          "revisionKey"
-        )}`;
+        const releaseName = this.readConfig("releaseName");
         const assetsDir = this.readConfig("assetsDir");
         const urlPrefix = this.readConfig("urlPrefix")
           ? `--url-prefix ${this.readConfig("urlPrefix")}`
@@ -74,8 +79,7 @@ module.exports = {
       },
 
       didDeploy() {
-        const appName = this.readConfig("appName");
-        const releaseName = `${appName}@${this.readConfig("revisionKey")}`;
+        const releaseName = this.readConfig("releaseName");
         const environment = this.readConfig("environment");
 
         this.log("SENTRY: Deploying release...");
@@ -87,8 +91,7 @@ module.exports = {
       },
 
       didFail() {
-        const appName = this.readConfig("appName");
-        const releaseName = `${appName}@${this.readConfig("revisionKey")}`;
+        const releaseName = this.readConfig("releaseName");
 
         this.log("SENTRY: Deleting release...");
         this.sentryCliExec("releases", `delete "${releaseName}"`);
