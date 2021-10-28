@@ -165,7 +165,7 @@ describe('sentry-cli', function () {
 
       this.sinon.assert.calledWithExactly(
         stub,
-        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project "my-project new my-project@v1.0.0@1234567"`
+        `${SENTRY_BIN_PATH}  --auth-token my-auth-token releases --org my-org --project my-project new "my-project@v1.0.0@1234567"`
       );
     });
 
