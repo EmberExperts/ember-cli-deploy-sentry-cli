@@ -218,14 +218,16 @@ describe('sentry-cli', function () {
         )} --url-prefix ~/assets`
       );
     });
+  });
 
+  describe('didActivate', function() {
     it('saves release', function () {
       const plugin = Plugin.createDeployPlugin({ name: 'sentry-cli' });
       const stub = this.sinon.stub(plugin, '_exec');
 
       plugin.beforeHook(this.context);
       plugin.configure(this.context);
-      plugin.didPrepare();
+      plugin.didActivate();
 
       this.sinon.assert.calledWithExactly(
         stub,

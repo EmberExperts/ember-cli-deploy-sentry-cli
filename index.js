@@ -67,10 +67,16 @@ module.exports = {
           `files "${releaseName}" upload-sourcemaps --rewrite ${assetsDir} ${urlPrefix}`
         );
 
+        this.log("SENTRY: Release published!...");
+      },
+
+      didActivate() {
+        const releaseName = `${this.readConfig("appName")}@${this.readConfig(
+          "revisionKey"
+        )}`;
+
         this.log("SENTRY: Finalizing release...");
         this.sentryCliExec("releases", `finalize "${releaseName}"`);
-
-        this.log("SENTRY: Release published!...");
       },
 
       didDeploy() {
