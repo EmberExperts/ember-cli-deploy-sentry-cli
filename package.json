@@ -39,7 +39,7 @@
   "dependencies": {
     "@sentry/cli": "^1.70.1",
     "ember-cli-deploy-plugin": "^0.2.9",
-    "ember-cli-deploy-revision-data": "^1.0.0"
+    "ember-cli-deploy-revision-data": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^4.3.4",
